@@ -107,7 +107,7 @@ sys.stdin = open('h.txt','r')
 # print(c)
 
 print(1)
-
+print(2)
 
 
 
