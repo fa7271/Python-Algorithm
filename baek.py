@@ -106,6 +106,7 @@ sys.stdin = open('h.txt','r')
 #         c+=1
 # print(c)
 
+print(1)
 
 
 
