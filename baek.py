@@ -1,6 +1,6 @@
 
 import sys
-sys.stdin = open('h.txt','r')
+sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt','r')
 # input = sys.stdin.readline
 
 # data = sys.stdin.read()
@@ -105,13 +105,6 @@ sys.stdin = open('h.txt','r')
 #     if h(i+1):
 #         c+=1
 # print(c)
-
-print(1)
-print(2)
-
-
-
-
 
 
 
