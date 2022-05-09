@@ -13,6 +13,8 @@ if cnt.count(max(cnt)) >= 2:
     print("?")
 else:
     print(word_list[(cnt.index(max(cnt)))])
+
+
 ###############################
 
 n = input()
