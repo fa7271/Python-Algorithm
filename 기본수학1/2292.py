@@ -7,7 +7,6 @@ n = int(input())
 
 line = 1
 next_num = 1
-
 if n == 1:
     print(1)
 else:
