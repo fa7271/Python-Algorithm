@@ -1,9 +1,19 @@
 import sys
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt','r')
 
-A,B,C = map(int,input().split())
 
-if B>C:
-    print(-1)
+
+n = int(input())
+
+line = 1
+next_num = 1
+
+if n == 1:
+    print(1)
 else:
-    print(A//(C-B)+1)
+    while True:
+        if n <= next_num:
+            print(line)
+            break
+        next_num += (6 * line)
+        line += 1
