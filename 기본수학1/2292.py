@@ -5,6 +5,7 @@ sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt','r')
 
 n = int(input())
 
+
 line = 1
 next_num = 1
 if n == 1:
