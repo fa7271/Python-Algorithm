@@ -3,14 +3,12 @@ sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt','r')
 
 def stars(n):
     array = []
-    print(len(n))
     for i in range(3*len(n)):
         if i//len(n) ==1:                       # 몫이 1일때 가운데 3*3 부분
             array.append(n[i%len(n)] + " " * len(n) + n[i%len(n)]) # i 2일때
             # array.append(n[2]+ " "*3 + n[2])
         else:                                   # 나머지가 1일때
             array.append(n[i%len(n)] * 3 )
-    print(list(array))
     return(list(array))
 
 star = ["***","* *","***"]
