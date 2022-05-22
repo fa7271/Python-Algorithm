@@ -3,9 +3,10 @@ sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt','r')
 
 
 
-def hanoi(N,i,j,via):           #
+def hanoi(N,i,j,via):                  # i 시작 j 목표 via 보조
     if N == 1:
         print(i,j)
+        return
     else:
         hanoi(N-1,i,via,j)
         print(i,j)
