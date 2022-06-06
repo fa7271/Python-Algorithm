@@ -33,7 +33,6 @@ def solve(d, n, m):
             visited[i] = False
             result.pop()
 
-
 n, m = map(int, sys.stdin.readline().split())
 
 visited = [False] * n
