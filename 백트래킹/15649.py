@@ -20,22 +20,31 @@ sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 #         s.pop()
 # f()
 
-n, m = map(int, sys.stdin.readline().split())
+# n, m = map(int, sys.stdin.readline().split())
+#
+#
+# def solve(num):
+#     if num == m:
+#         print(" ".join(map(str, result)))
+#         return
+#     for i in range(n):
+#         if visited[i] == False:
+#             visited[i] = True
+#             result.append(i + 1)
+#             solve(num+1)
+#             visited[i] = False
+#             result.pop()
+#
+#
+# visited = [False] * n
+# result = []
+# solve(0)
 
+from itertools import permutations
 
-def solve(num):
-    if num == m:
-        print(" ".join(map(str, result)))
-        return
-    for i in range(n):
-        if visited[i] == False:
-            visited[i] = True
-            result.append(i + 1)
-            solve(num+1)
-            visited[i] = False
-            result.pop()
+N,M = map(int,input().split())
 
+P = permutations(range(1,N+1),M)
 
-visited = [False] * n
-result = []
-solve(0)
+for i in P:
+    print(" ". join(map(str,i)))
