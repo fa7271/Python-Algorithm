@@ -20,21 +20,22 @@ sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 #         s.pop()
 # f()
 
+n, m = map(int, sys.stdin.readline().split())
 
-def solve(d, n, m):
-    if d == m:
+
+def solve(num):
+    if num == m:
         print(" ".join(map(str, result)))
         return
     for i in range(n):
         if visited[i] == False:
             visited[i] = True
             result.append(i + 1)
-            solve(d + 1, n, m)
+            solve(num+1)
             visited[i] = False
             result.pop()
 
-n, m = map(int, sys.stdin.readline().split())
 
 visited = [False] * n
 result = []
-solve(0, n, m)
+solve(0)
