@@ -25,7 +25,6 @@ def solve(num):
             visited[i] = True
             result.append(i + 1)
             solve(num+1)
-            visited[i] = True
             result.pop()
             for j in range(i+1, n):
                 visited[j] = False
