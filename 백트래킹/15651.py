@@ -22,7 +22,7 @@ def solve(num):
 
     for i in range(n):
         if visited[i] == False:
-
+            # visited[i] =True            #  방문여부 체크인데 중복 가능이니 필요없음
             result.append(i + 1)
             solve(num+1)
             # visited[i] = False
@@ -31,3 +31,4 @@ def solve(num):
             #     visited[i] = False
 solve(0)
 
+# 중복이 가능므로 빅오 O(N^2) (10개 까지 가능)
