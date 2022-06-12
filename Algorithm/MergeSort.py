@@ -1,11 +1,6 @@
 import sys
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
-
-# 쉽게 설명한 병합 정렬
-# 입력: 리스트 a
-# 출력: 정렬된 새 리스트
-
 def merge_sort(a):
     n = len(a)
     # 종료 조건: 정렬할 리스트의 자료 개수가 한 개 이하이면 정렬할 필요 없음
@@ -13,9 +8,9 @@ def merge_sort(a):
         return a
     # 그룹을 나누어 각각 병합 정렬을 호출하는 과정
     mid = n // 2  # 중간을 기준으로 두 그룹으로 나눔
-    g1 = merge_sort(a[:mid]) # 재귀 호출로 첫 번째 그룹을 정렬
-    g2 = merge_sort(a[mid:]) # 재귀 호출로 두 번째 그룹을 정렬
-    # 두 그룹을 하나로 병합
+    g1 = merge_sort(a[:mid]) # 재귀 호출로 첫 번째 그룹을 정렬  처음 부터 mid 까지
+    g2 = merge_sort(a[mid:]) # 재귀 호출로 두 번째 그룹을 정렬  mid 부터 끝까지
+# 두 그룹을 하나로 병합
     result = []
     while g1 and g2:  # 두 그룹에 모두 자료가 남아 있는 동안 반복
         if g1[0] < g2[0]: # 두 그룹의 맨 앞 자료 값을 비교
