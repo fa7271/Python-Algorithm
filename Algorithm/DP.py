@@ -7,7 +7,7 @@ dp = [0]*100            # 방생성
 dp[1]=1
 dp[2]=1
 n=99
-# bottom up 방식
+# bottom up 방식   자주 쓰이는 방법
 for i in range(3, n+1):
     dp[i] = dp[i-1]+dp[i-2]
 
