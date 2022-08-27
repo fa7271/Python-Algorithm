@@ -1,6 +1,6 @@
 
 import sys
-sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt','r')
+sys.stdin = open('/Python/bs/h.txt', 'r')
 # input = sys.stdin.readline
 
 # data = sys.stdin.read()

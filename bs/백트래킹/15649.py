@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('/Python/h.txt', 'r')
+sys.stdin = open('/Python/bs/h.txt', 'r')
 
 # input = sys.stdin.readline
 # # input = int(sys.stdin.readline())
