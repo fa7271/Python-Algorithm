@@ -1,65 +1,18 @@
 def solution(id_list, report, k):
-    answer = []
-    #{} 키가 신고한사람 밸류가 당한사람
-    arr = {} #  키가 신고당한아이디 밸류가 신고한아이디 set
-    answerDic = {}
-    for i in range(len(id_list)):
-        arr[id_list[i]] = set()
-        answerDic[id_list[i]] = 0
 
-    # print(answerDic) {'muzi': 0, 'frodo': 0, 'apeach': 0, 'neo': 0}
-    # print(answerDic)
-    for i in range(len(report)):
-        reporter, reported = report[i].split(" ")
-        arr[reported].add(reporter)
-    print(arr)
+    answer = [0] * len(id_list)
+    reported = {x:0 for x in id_list}
 
-    res = []
-    for name, v in arr.items():
-        res.append(len(arr.get(name)))
-    print(res)
+    print(report)
+    for i in set(report):
+        reported[i.split()[1]] += 1
+    print(reported)
 
-    result = {}
-    for i in range(len(res)):
-        result[id_list[i]] = res[i]
+    for i in set(report):
+        if reported[i.split()[1]] >= k:
+            answer[id_list.index(i.split()[0])] += 1
 
-    print(result)
-
-    value = list(result.keys())
-
-    sol = {}
-    for i in range(len(id_list)):
-        sol[id_list[i]] = 0
-
-    # print(sol)
-    x = []
-    for i in range(len(result)):
-        if(result.get(value[i]) >= k):
-            print(arr[value[i]])
-
-            x.append((arr[value[i]]))
-
-    print("----------")
-    print(x[0])
-    print(x[1])
-
-    # for value in result.values():
-    #     list.append(value, end=',')
-    #     print(list)
-
-
-
-    # print(result)
-    # for id, rpt  in arr.items:
-    #     reporter, reported = report[i].split(" ")
-    #     # if id in succ:
-    #     #     for i in range(len(list(rpt.values())))
-    #
-    #     for j in range(len(succ)):
-    #         if(rpt):
-    #             answerDic[reporter] += 1
-    #
-    # answer = list(answerDic.values())
+    print(answer)
 
     #1. 신고 처리된 사람(k번 이상 신고 받은 사람)
     #1-1 신고 횟수 계산
