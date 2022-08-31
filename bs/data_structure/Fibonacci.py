@@ -17,3 +17,5 @@ def solution(x):
         return x
     else:
         return solution(x-1) + solution(x-2)
+
+print(solution(2))
