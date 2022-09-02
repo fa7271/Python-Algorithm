@@ -76,6 +76,12 @@ class LinkedList:
             curr = curr.next
         return result
 
+    def concat(self,L):
+        self.tail.next = L.head
+        if L.tail:
+            self.tail = L.tail
+        self.nodeCount += L.nodeCount
+
 
 def solution(x):
     return 0
