@@ -8,10 +8,10 @@ class Node:
 class LinkedList:
 
     def __init__(self):     #dummy node 를 만들어 줌
-        self.nodeCount = 0
-        self.head = Node(None)
-        self.tail = None
-        self.head.next = self.tail
+        self.nodeCount = 0  # 노드 카운트 0
+        self.head = Node(None)  # 첫  헤드 논
+        self.tail = None        # 첫  꼬리 논
+        self.head.next = self.tail  # 0 이니깐 성립
 
 
     def __repr__(self):
