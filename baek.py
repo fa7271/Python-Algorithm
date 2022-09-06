@@ -1,4 +1,4 @@
-파이썬 기술
+파이썬 기술  1, 컴프리핸션 잘 이해하기 (리스트 딕셔너리)
 
 # return [sorted(array[a-1:b])[c-1] for a,b,c in commands]
 
