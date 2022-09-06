@@ -35,9 +35,9 @@ class LinkedList:
     def traverse(self):
         result = []
         curr = self.head
-        while curr.next:
-            curr = curr.next
-            result.append(curr.data)
+        while curr.next:        # curr.next 가 살아 있는한
+            curr = curr.next    # curr. next 를 curr 로 하고
+            result.append(curr.data)    # 데이터를 추가한다.
         return result
 
 
@@ -56,7 +56,7 @@ class LinkedList:
 
     def insertAfter(self, prev, newNode):
         newNode.next = prev.next
-        if prev.next is None:
+        if prev.next is None:       # tail 의 뒤에 새로운 노드를 삽입하는 경우
             self.tail = newNode
         prev.next = newNode
         self.nodeCount += 1
@@ -79,3 +79,28 @@ class LinkedList:
         if L.tail:
             self.tail = L.tail
         self.nodeCount += L.nodeCount
+
+    def popAfter(self, prev):
+        # prev가 맨 마지막 노드인 경우를 고려 X
+        curr = prev.next
+        answer = curr.data
+
+        # 삭제하는 노드가 리스트의 맨 마지막 노드인 경우, tail을 prev로 조정
+        if curr.next == None:
+            self.tail = prev
+            prev.next = None
+        # 그 외의 경우
+        else:
+            prev.next = curr.next
+
+        self.nodeCount -= 1
+        curr = None
+        return answer
+
+    def popAt(self, pos):
+        if pos < 1 or pos > self.nodeCount:
+            raise IndexError
+        else:
+            prev = self.getAt(pos-1)
+            return self.popAfter(prev)
+
