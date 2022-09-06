@@ -101,6 +101,5 @@ class LinkedList:
         if pos < 1 or pos > self.nodeCount:
             raise IndexError
         else:
-            prev = self.getAt(pos-1)
-            return self.popAfter(prev)
+            return self.popAfter(self.getAt(pos-1))
 
