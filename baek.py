@@ -12,3 +12,4 @@
 #     return int("".join(list(reversed(sorted(str(n))))))
 # print(solution(118372))
 
+#     return s.isnumeric() 숫자이면 true 문자열이면 false 리턴
