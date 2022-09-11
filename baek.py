@@ -13,3 +13,7 @@
 # print(solution(118372))
 
 #     return s.isnumeric() 숫자이면 true 문자열이면 false 리턴
+
+# divmod() : 몫과 나머지를 같이 반환해주는 함수
+# 2) int(x, base) : base 진법으로 구성된 str 형식의 수를 10진법으로 변환해 줌
+# ex) 3진법 뒤집기 프로그래머스
