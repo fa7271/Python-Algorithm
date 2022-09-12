@@ -21,4 +21,8 @@
 tmp = bin(arr1[i] or arr2[i])
 or / | 차이 | 은 이진수를 반환함
 tmp = tmp[2:].zfill(n)
-# 앞에 두개 짜르고 뒤에 n 자릿수 만큼만큼 0 차운다
+앞에 두개 짜르고 뒤에 n 자릿수 만큼만큼 0 차운다
+
+
+return sorted(sorted(strings), key=itemgetter(n))
+# itemgetter(n) 은 sorted() 함수의 key 매개변수에 사용 가능 튜플, 딕셔너리 에서도 사용 가능
