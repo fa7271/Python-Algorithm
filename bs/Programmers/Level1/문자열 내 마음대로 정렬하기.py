@@ -1,8 +1,6 @@
 def solution(strings, n):
 
-    sort_string = sorted(strings)
-    tuple = {x : x[n] for x in sort_string}
-    return sorted(tuple, key = lambda x : (x[n],x) )
+    return sorted({x : x[n] for x in sorted(strings)}, key = lambda x : (x[n],x) )
 
 
     # return sorted(strings, key = lambda x : (x[n],x) )
