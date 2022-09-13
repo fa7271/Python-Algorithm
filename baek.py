@@ -5,6 +5,7 @@
 # 이중 리스트 [ [] ] 일때 [] 하나 빼고 출력하기 print(*) * 하고 출력하면됨
 
 # combination = list(itertools.combinations(nums, 3)) # 리스트 num 에서 3개 뽑느 수열
+# for i in product(l1,l2,repeat=1): #l1과 l2의 모든 쌍을 지어 리턴한다
 
 #''.join(리스트)''.join(리스트)를 이용하면 매개변수로 들어온 ['a', 'b', 'c'] 이런 식의 리스트를 'abc'의 문자열로 합쳐서 반환해주는 함수인 것입니다.
 # ex

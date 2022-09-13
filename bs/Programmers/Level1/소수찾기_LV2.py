@@ -6,6 +6,7 @@ def solution(n):
     com_list = []
     for i in range(1, len(numbers) + 1):
         com_list += list(permutations(numbers, i))
+    # com_list2 = sum([ list(permutations(numbers, i)) for i in range(1, len(numbers) + 1)],[])
 
     new_list = set(int(("").join(i)) for i in com_list)
     new_list_len = len(new_list)
@@ -22,4 +23,4 @@ def solution(n):
 
 
 
-print(solution("17"))
+print(solution("011"))
