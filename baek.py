@@ -34,3 +34,6 @@ res = re.sub('\.\.+' , '.' , res) # 3. 점 2개 짜리 1개로 바꿈
 res = res.strip('.') # 4. 양쪽 끝 . 제거 strip() 매개변수로 넘겨주는거 문자열 시작/ 끝에서 제거해줌
 
 s = bin(len(s))[2:] # 2진 변환 bin(숫자)  # [2:] 해줘야 첫 0b 빼고 출력
+
+enumerate 에 start 넣을수 있음
+ex)answer = max(map(min, enumerate(citations, start=1)))
