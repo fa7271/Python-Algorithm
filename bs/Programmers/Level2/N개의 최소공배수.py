@@ -10,3 +10,12 @@ def solution(arr):
             return res
         res += max
 print(solution([2,6,8,14]))
+
+from fractions import gcd
+
+def nlcm(num):
+    answer = num[0]
+    for n in num:
+        answer = n * answer / gcd(n, answer)
+
+    return answer
