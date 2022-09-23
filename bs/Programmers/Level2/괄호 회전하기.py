@@ -20,7 +20,6 @@ from collections import deque
 def isCorrect(s):
         stack = []
         s = deque(s)
-        print("step1")
         while s:
             tmp = s.popleft()
             if stack:
@@ -39,7 +38,6 @@ def isCorrect(s):
 
 def solution(s):
     answer = 0
-    print("step2")
     for i in range(len(s)):
         if isCorrect(s[i:] + s[:i]):
             answer += 1
