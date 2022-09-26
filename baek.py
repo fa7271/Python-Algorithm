@@ -37,3 +37,6 @@ s = bin(len(s))[2:] # 2진 변환 bin(숫자)  # [2:] 해줘야 첫 0b 빼고 �
 
 enumerate 에 start 넣을수 있음
 ex)answer = max(map(min, enumerate(citations, start=1)))
+
+if 문에서 'startwith' 사용 처음에 들어가는 숫자 찾을 수 있음
+ex) s.startswith('문자') >> 프로그래머스 2레벨 전화번호
