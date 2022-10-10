@@ -1,4 +1,4 @@
-def solution(n, t):
-    return n ** t
+def solution(order):
+    # return list(lambda x: str(order).count(str(x)), [3, 6, 9])
 
-print(solution(	2, 10))
+print(solution(300000))
