@@ -40,3 +40,5 @@ ex)answer = max(map(min, enumerate(citations, start=1)))
 
 if 문에서 'startwith' 사용 처음에 들어가는 숫자 찾을 수 있음
 ex) s.startswith('문자') >> 프로그래머스 2레벨 전화번호
+
+return list(map(lambda x: str(order).count(str(x)), [3, 6, 9])) 숫자에서 3,6,9 갯수를 세서 리스트 형으로 리턴함
