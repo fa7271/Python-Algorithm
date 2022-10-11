@@ -1,4 +1,5 @@
-def solution(order):
-    # return list(lambda x: str(order).count(str(x)), [3, 6, 9])
+def solution(array):
+    # array.count()
+    return  ''.join(str(x) for x in array).count("7")
 
-print(solution(300000))
+print(solution([7,17,77]))
