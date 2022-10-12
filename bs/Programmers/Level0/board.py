@@ -1,5 +1,10 @@
-def solution(array):
-    # array.count()
-    return  ''.join(str(x) for x in array).count("7")
+def solution(cipher, code):
+    res =[]
+    i = code - 1
+    while i < len(cipher):
+        res.append(cipher[i])
+        i += code
+    return "".join(res)
 
-print(solution([7,17,77]))
+    answer = cipher[code-1::code]
+print(solution("dfjardstddetckdaccccdegk",4))
