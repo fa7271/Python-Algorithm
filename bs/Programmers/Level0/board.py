@@ -1,10 +1,16 @@
-def solution(cipher, code):
-    res =[]
-    i = code - 1
-    while i < len(cipher):
-        res.append(cipher[i])
-        i += code
-    return "".join(res)
 
-    answer = cipher[code-1::code]
-print(solution("dfjardstddetckdaccccdegk",4))
+def solution(n):
+    res = []
+    for i in range(1,n+1):
+        j = 1
+        while j < i:
+            count = 2
+            print(count)
+            if i % j == 0:
+                count += 1
+            if count >= 3:
+                res.append(j)
+                break
+            j += 1
+    print(res)
+print(solution(10))
