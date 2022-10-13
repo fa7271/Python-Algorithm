@@ -2,15 +2,12 @@
 def solution(n):
     res = []
     for i in range(1,n+1):
-        j = 1
-        while j < i:
-            count = 2
-            print(count)
+        count = 0
+        for j in range(1, i+1):
             if i % j == 0:
                 count += 1
             if count >= 3:
-                res.append(j)
+                res.append(i)
                 break
-            j += 1
-    print(res)
+    return len(res)
 print(solution(10))
