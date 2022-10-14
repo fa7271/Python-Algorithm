@@ -1,13 +1,12 @@
 
-def solution(n):
+
+def solution(numbers, k):
     res = []
-    for i in range(1,n+1):
-        count = 0
-        for j in range(1, i+1):
-            if i % j == 0:
-                count += 1
-            if count >= 3:
-                res.append(i)
-                break
-    return len(res)
-print(solution(10))
+    if len(numbers) < 2 * k:
+        x,y = divmod((2*k),len(numbers))
+        res.append(numbers * x + numbers[:y] )
+    res = sum(res,[])
+    return res[2*k-2]
+
+print(solution([1, 2, 3],3))
+# print(solution(	1, 13, 1))
