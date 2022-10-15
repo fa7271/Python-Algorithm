@@ -44,3 +44,5 @@ ex) s.startswith('문자') >> 프로그래머스 2레벨 전화번호
 return list(map(lambda x: str(order).count(str(x)), [3, 6, 9])) 숫자에서 3,6,9 갯수를 세서 리스트 형으로 리턴함
 
 return eval(my_string) # 문자열 내 계산 if my_stirng "3 + 4" 일떄 7 리턴해줌
+
+int(i) for i in re.findall(r'[0-9]+', my_string) # 문자열 내 숫자만 골라냄 1ㅇㄹ34ㅇ 이면 1,34 로 빼냄 level0 숨어있는 숫자의 덧셈
