@@ -1,17 +1,16 @@
-from itertools import combinations
-import re
+from itertools import combinations, permutations
 
 
-def solution(id_pw, db):
-    for i in db:
-        # id 여부 확인
-        if id_pw[0] in i:
-            if id_pw[1] == i[1]:
-                return "login"
-            else:
-                return "wrong pw"
-    return "fail"
-# print(solution(["p", "o", "s"],["sod", "eocd", "qixm", "adio", "soo"]))
-print(solution(["meosseugi", "1234"], [["rardss", "123"], ["yyoom", "1234"], ["meosseugi", "1234"]]))
-# print(solution("apple","elppa"))
-# print(solution(	1, 13, 1))
+def solution(score):
+    score_list = [sum(i) for i in score]
+    list = sorted([sum(i) for i in score], reverse=True)
+    print(list)
+    print(score_list)
+    res = [list.index(i) +1 for i in score_list]
+
+    return res
+print(solution(	[[80, 70], [70, 80], [30, 50], [90, 100], [100, 90], [100, 100], [10, 30]]))
+# print(solution([[80, 70], [90, 50], [40, 70], [50, 80]]))
+
+
+
