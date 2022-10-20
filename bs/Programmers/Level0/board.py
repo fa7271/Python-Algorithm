@@ -1,61 +1,55 @@
-def solution(board):
-    board_True = [[0 for col in range(len(board))] for row in range(len(board))]
-    mine = 0
-    for x in range(0, len(board)):
-        for y in range(0,len(board[0])):
-            if board[x][y] == 1:
-                if x == 0 and 1 <= y < len(board): # 맨 윗줄 맨 아랫줄
-                    board_True[x][y-1:y+2] = "False","False","False"
-                    board_True[x+1][y-1:y+2] = "False","False","False"     #down
-                # elif y == 0 and 1<= x < len(board): # 맨 왼쪽줄 맨 오른쪽 줄
-                #     board_True[x-1:x+2][y] = "False","False","Falsse"
-                #     board_True[x-1:x+2][y+1] = "False","False","False"
-                # elif x == 0 and y == 0 : #왼쪽위
-                #     board_True[x][y:y+2] = "False","False"
-                #     board_True[x+1][y:y+2] = "False"
-                # elif x == 0 and y == 4 : # 왼쪽아래
-                #     board_True[x][y-1:y+1] = "False","False"
-                #     board_True[x+1][y-1:y+1] = "False","False"
-                # elif x == 4 and y == 0 : #오른쪽위
-                #     board_True[x][y:y+2] = "False","False"
-                #     board_True[x-1][y:y+2] = "False"
-                # elif x == 4 and y == 4 : # 왼쪽아래
-                #     board_True[x][y-1:y+1] = "False","False"
-                #     board_True[x-1][y-1:y+1] = "False","False"
-                # else:
-                #     board_True[x-1][y-1:y+2] = "False","False","False"     # up
-                #     board_True[x][y-1:y+2] = "False","False","False"             #mid
-                #     board_True[x+1][y-1:y+2] = "False","False","False"     #down
-    return (len(board)*len(board)) - sum(board_True,[]).count('False') - mine
+def solution(polynomial):
+    res = polynomial.replace(" ","").split("+")
+    num ="0"
+    strr = "0"
+    if "".join(res).isnumeric():
+        return eval(polynomial)
 
-        # for y in board[0][1:]:
-            # if y = 1:
-            # if board[x][y] == 1:
-            #     board_True[x][y] = "False"
-            #     print(board_True)
-    # print(board_True)
+    for i in res:
+        if i.isnumeric():
+            num = str(int(num)+int(i))
+        else:
+            if i == "x" and len(i) == 1:
+                strr = str(int(strr) + 1)
+            else:
+                strr = str(int(strr) + int(i[:-1]))
+    if num =="0" and strr =="0":
+        return "0"
+    if num == "0":
+        return str(strr) +"x"
+    elif strr == 0:
+        return strr
+    elif strr == "1":
+        return "x" " + "+ num
+    else:
+        return str(strr) +"x"+" " + "+" + " " + num
 
-def solution(board):
-    answer = 0
+def solution(polynomial):
+    x, num = 0, 0
+    polynomial = polynomial.split(" + ")
+    for i in polynomial:
+        if i.isnumeric():
+            num += int(i)
+        else:
+            if len(i) == 1:
+                x += 1
+            else:
+                x += int(i[:-1])
+    if x == "0" and num == "0":
+        return "0"
+    if x == "0":
+        return num
+    if x == "1":
+        x = ""
+    if num == "0":
+        return x + "x"
+    return x + "x + " + num
 
-    for col in range(len(board)):
-        for row in range(len(board[col])):
-            if board[row][col] == 1:
-                for j in range(max(col-1,0),min(col+2,len(board))):
-                    for i in range(max(row-1,0),min(row+2,len(board))):
-                        if board[i][j] == 1:
-                            continue
-                        board[i][j] = -1
-    for i in board:
-        answer += i.count(0)
-
-    return answer
-
-# 3,2
-# print(solution( [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]] ))  # f 8 - m 1
-print(solution( [[1,1,1], [1,0,0], [1,0,0]] ))  # f 8 - m 1
-# print(solution( [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 1, 0], [0, 0, 0, 0, 0]] ))  # f 12 - m 2
-# print(solution( [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 1, 0], [0, 0, 0, 0, 0]]  ))  # f 12 - m 2
-# print(solution( [[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1]] ))
-
-
+# print(solution(	"x + x + x"))
+# print(solution(	"3x + 73x + x"))
+# print(solution("1 + 2 + 3 + 4"))
+print(solution("5x + 12 + 72x"))
+# print(solution("72x"))
+# print(solution("72x+200"))
+# print(solution("x + 200"))
+# print(solution("7 + 1 + 2"))
