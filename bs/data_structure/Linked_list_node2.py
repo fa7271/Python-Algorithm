@@ -44,24 +44,23 @@ class LinkedList:
         if pos < 1 or pos > self.nodeCount + 1:
             return False
 
-        if pos == 1:
+        if pos == 1: # 맨앞에 넣을때
             newNode.next = self.head
             self.head = newNode
 
-        else:
-            if pos == self.nodeCount + 1:
+        else:   # 맨 앞 말고 다른 곳 에 넣을떄
+            if pos == self.nodeCount + 1: # 맨뒤에 넣을때
                 prev = self.tail
             else:
                 prev = self.getAt(pos - 1)
             newNode.next = prev.next
             prev.next = newNode
 
-        if pos == self.nodeCount + 1:
+        if pos == self.nodeCount + 1: # 예외) 맨 마지막에 넣을떄
             self.tail = newNode
 
         self.nodeCount += 1
         return True
-
 
     def getLength(self):
         return self.nodeCount
