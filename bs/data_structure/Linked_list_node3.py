@@ -45,7 +45,7 @@ class LinkedList:
         if pos < 0 or pos > self.nodeCount:
             return None
 
-        i = 0
+        i = 0 # 더미노드 이전에는 1
         curr = self.head
         while i < pos:
             curr = curr.next

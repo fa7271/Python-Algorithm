@@ -53,10 +53,10 @@ class LinkedList:
         if pos < 1 or pos > self.nodeCount:
             raise IndexError
 
-        if pos == 1:
+        if pos == 1: # 맨 앞 노드를 삭제하는 경우
             curr = self.head
             self.head = curr.next
-            if self.nodeCount == 1:
+            if self.nodeCount == 1: # 첫번째 노드인데 유일한 노드를 삭제하는 경우
                 self.tail = self.head
         else:
             prev = self.getAt(pos-1)
