@@ -17,10 +17,12 @@ def solution(operations):
                 else:
                     list.remove(max(list))
                     heapq.heapify(list)
-
     return [max(list), min(list)] if len(list) >=2 else [0,0]
 
 
 
 # print(solution(["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"] ))
-print(solution( ["I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"] ))
+# print(solution( ["I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"] ))
+print(solution( ["I 6", "I 2", "I 1", "I 4", "I 5", "I 3", "D 1", "I 7", "D -1", "I 6", "D -1", "D -1"] ))
+
+
