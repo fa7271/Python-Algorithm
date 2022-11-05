@@ -1,15 +1,12 @@
-import sys
-sys.stdin = open('/Python/h.txt', 'r')
 
-input = sys.stdin.readline
-# input = int(sys.stdin.readline())
+def solution(triangle):
+    dp = [[0]*len(triangle) for i in range(len(triangle))]
+    dp[0][0] = triangle[0][0]
+    for i in range(0, len(triangle)-1):
+        for j in range(len(triangle[i])):
+            dp[i+1][j] = max(dp[i+1][j], dp[i][j] + triangle[i+1][j]) # 밑으로
+            dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j]+triangle[i+1][j+1]) # 대각선으로
 
-
-arr =input().replace("XXXX","AAAA").replace("XX","BB")
-
-if "X" in arr:
-    print(-1)
-else:
-    print(arr)
-
-
+    return max(dp[-1])
+# print(solution(10, [[3, 4], [5, 8]], [[2, 5], [4, 3]]))
+print(solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))
