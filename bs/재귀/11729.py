@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('/Python/h.txt', 'r')
+sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
 
 
