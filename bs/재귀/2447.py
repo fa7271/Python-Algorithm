@@ -1,9 +1,10 @@
 import sys
-sys.stdin = open('/Python/h.txt', 'r')
+sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
 def stars(n):
     array = []
     for i in range(3*len(n)):
+        print(i//len(n))
         if i//len(n) ==1:                       # 몫이 1일때 가운데 3*3 부분
             array.append(n[i%len(n)] + " " * len(n) + n[i%len(n)]) # i 2일때
             # array.append(n[2]+ " "*3 + n[2])
@@ -18,7 +19,6 @@ k = 0
 while n != 3:
     n = int(n/3)
     k += 1
-
 for i in range(k):
     star = stars(star)
 for i in star:
