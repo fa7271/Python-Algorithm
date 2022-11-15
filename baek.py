@@ -48,3 +48,8 @@ return eval(my_string) # 문자열 내 계산 if my_stirng "3 + 4" 일떄 7 리�
 int(i) for i in re.findall(r'[0-9]+', my_string) # 문자열 내 숫자만 골라냄 1ㅇㄹ34ㅇ 이면 1,34 로 빼냄 level0 숨어있는 숫자의 덧셈
 
 a = Counter(array).most_common(2) # 최빈값 2개를 가져옴
+
+# 시간 측정
+end_time = time.time() # 측정 종료
+print("time:", end_time - start_time) # 수행 시간 출력
+print(min(RGB[-1]))
