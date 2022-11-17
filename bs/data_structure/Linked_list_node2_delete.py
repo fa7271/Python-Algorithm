@@ -35,7 +35,7 @@ class LinkedList:
             self.head = newNode
 
         else:
-            if pos == self.nodeCount + 1:
+            if pos == self.nodeCount + 1: # 맨 끝에 찾아갈때 굳이 처음부터 안 가도
                 prev = self.tail
             else:
                 prev = self.getAt(pos - 1)

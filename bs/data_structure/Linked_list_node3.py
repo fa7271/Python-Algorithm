@@ -13,7 +13,6 @@ class LinkedList:
         self.tail = None        # 첫  꼬리 논
         self.head.next = self.tail  # 0 이니깐 성립
 
-
     def __repr__(self):
         if self.nodeCount == 0:
             return 'LinkedList: empty'
@@ -67,7 +66,7 @@ class LinkedList:
         if pos < 1 or pos > self.nodeCount + 1:
             return False
 
-        if pos != 1 and pos == self.nodeCount + 1:
+        if pos != 1 and pos == self.nodeCount + 1: # 둘다 같은 경우는 빈 리스트에 넣는 경우이기 때문에
             prev = self.tail
         else:
             prev = self.getAt(pos - 1)

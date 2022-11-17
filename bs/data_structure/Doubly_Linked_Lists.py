@@ -10,28 +10,34 @@ class DoublyLinkedList:
 
     def __init__(self):
         self.nodeCount = 0
-        self.head = Node(None)
-        self.tail = Node(None)
+        self.head = Node(None) # head dummy node
+        self.tail = Node(None) # tail dummy node
         self.head.prev = None
-        self.head.next = self.tail
-        self.tail.prev = self.head
+        self.head.next = self.tail # 진행 방향 >>
+        self.tail.prev = self.head # 진행 방향 <<
         self.tail.next = None
 
 
     def traverse(self):
         result = []
         curr = self.head
-        while curr.next.next:
+        while curr.next.next: # next 두번 쓴 이유: 빈 노드일때 next 면 tail 을 가르킴
             curr = curr.next
             result.append(curr.data)
         return result
-
+    def reverse(self):
+        result = []
+        curr =self.tail
+        while curr.prev.prev:
+            curr = curr.prev
+            result.append(curr.data)
+        return result
 
     def getAt(self, pos):
         if pos < 0 or pos > self.nodeCount:
             return None
 
-        if pos > self.nodeCount // 2:
+        if pos > self.nodeCount // 2: # 뒤쪽이면 뒤에서부터 찾아옴
             i = 0
             curr = self.tail
             while i < self.nodeCount - pos + 1:
