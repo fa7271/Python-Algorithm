@@ -78,7 +78,7 @@ class LinkedList:
 
     def concat(self,L):
         self.tail.next = L.head
-        if L.tail:
+        if L.tail: # 뒤에 리스트가 비었는지 확인해야함
             self.tail = L.tail
         self.nodeCount += L.nodeCount
 
