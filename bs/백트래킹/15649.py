@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('/Python/bs/h.txt', 'r')
+sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
 # input = sys.stdin.readline
 # # input = int(sys.stdin.readline())
@@ -26,7 +26,6 @@ result = []
 
 def solve(num):
     if num == m:                            # 탈출 조건 깊이와 m 이 같을떄
-        print(*result)
         return
     for i in range(1,n+1):
         if visited[i] == False:             # 방문 하지 않은곳이라면
@@ -36,7 +35,6 @@ def solve(num):
             print(result)
             visited[i] = False              # False 로 해주지 않으면 그 다음꺼 탐색 불가능
             result.pop()                    # 마지막꺼 나오니까 pop으로 빼내줌
-
 
 
 solve(0)

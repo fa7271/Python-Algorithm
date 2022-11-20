@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('/Python/h.txt', 'r')
+sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
 
 # from itertools import combinations
@@ -11,23 +11,41 @@ sys.stdin = open('/Python/h.txt', 'r')
 #     print(*i)
 
 
-n,m = map(int,input().split())
-visited = [False] * n
-result = []
+# n,m = map(int,input().split())
+# visited = [False] * n
+# result = []
 
-def solve(num):
-    if num == m:
-        print(*result)
+# def solve(num):
+#     if num == m:
+#         print(*result)
+#         return
+#
+#     for i in range(n):
+#         if visited[i] == False:
+#             visited[i] = True
+#             result.append(i + 1)
+#             solve(num+1)
+#             result.pop()
+#             for j in range(i+1, n):
+#                 visited[j] = False
+#
+# solve(0)
+
+n,m = map(int,input().split())
+
+nums = []
+
+def bt(num):
+    if len(nums) == m:
+        print(*nums)
         return
 
-    for i in range(n):
-        if visited[i] == False:
-            visited[i] = True
-            result.append(i + 1)
-            solve(num+1)
-            result.pop()
-            for j in range(i+1, n):
-                visited[j] = False
+    for i in range(num+1, n+1):
 
-solve(0)
+        nums.append(i)
+        bt(i)
+        nums.pop()
+
+bt(0)
+
 
