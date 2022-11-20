@@ -15,6 +15,8 @@ def bt():
     number = 0
     for i in range(n):
         if not visited[i] and number != x[i]:
+            if any(x[i] < num for num in result):
+                continue
             visited[i] = True
             result.append(x[i])
             number = x[i]
