@@ -50,27 +50,49 @@ def solution(maps):
 
 
 
+# from collections import deque
+#
+# def solution2(maps):
+#     N,M = len(maps), len(maps[0])
+#
+#     visited = [[-1]*M for _ in range(N)]
+#     visited [0][0] = 1 # 시작점은  밟아서 1
+#     move = [(0,1),(0,-1),(1,0),(-1,0)]
+#
+#     q = deque([(0,0)]) # 시작점
+#
+#     while q:
+#         x, y = q.popleft()
+#         if x == N-1 and y == M-1 :
+#             return visited[x][y]
+#         for a, b in move:
+#             x_move, y_move = x + a, y + b
+#             if N > x_move >=0 and M > y_move >= 0 and visited[x_move][y_move] == -1 and maps[x_move][y_move] == 1:
+#                 q.append((x_move,y_move))
+#                 visited[x_move][y_move] = visited[x][y] + 1
+#     return -1
+
 from collections import deque
 
 def solution2(maps):
-    N,M = len(maps), len(maps[0])
+    M, N = len(maps), len(maps[0])
 
     visited = [[-1]*M for _ in range(N)]
-    visited [0][0] = 1 # 시작점은  밟아서 1
+    visited[0][0] = 1
+
     move = [(0,1),(0,-1),(1,0),(-1,0)]
 
-    q = deque([(0,0)]) # 시작점
+    q = deque([(0,0)])
 
     while q:
         x, y = q.popleft()
-        if x == N-1 and y == M-1 :
+        if x == N-1 and y == M-1:
             return visited[x][y]
         for a, b in move:
-            x_move, y_move = x + a, y + b
-            if N > x_move >=0 and M > y_move >= 0 and visited[x_move][y_move] == -1 and maps[x_move][y_move] == 1:
-                q.append((x_move,y_move))
+            x_move, y_move = (x+a), (y+b)
+            if N > x_move >= 0 and M > y_move >= 0 and visited[x_move][y_move] == -1 and maps[x_move][y_move] == 1:
+                q.append((x_move, y_move))
                 visited[x_move][y_move] = visited[x][y] + 1
     return -1
 
-
-print(solution2([[1, 0, 1, 1, 1], [1, 0, 1, 0, 1], [1, 0, 1, 1, 1], [1, 1, 1, 0, 0], [0, 0, 0, 0, 1]]))
+print(solution2([[1, 0, 1, 1, 1], [1, 0, 1, 0, 1], [1, 0, 1, 1, 1], [1, 1, 1, 0, 1], [0, 0, 0, 0, 1]]))
