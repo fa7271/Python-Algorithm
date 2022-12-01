@@ -53,3 +53,9 @@ a = Counter(array).most_common(2) # 최빈값 2개를 가져옴
 end_time = time.time() # 측정 종료
 print("time:", end_time - start_time) # 수행 시간 출력
 print(min(RGB[-1]))
+
+이중리스트 조인함수 pr_LV2 교점에 별 만들기
+res = []
+for i in board:
+    res.append("".join(i))
+return list(map("".join,board))
