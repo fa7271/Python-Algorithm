@@ -2,7 +2,8 @@ from collections import deque
 def solution(s):
     x = deque([i for i in (s)])
     main, count = ["", 0, 0,], 0
-    for i in x:
+    while x:
+        i = x.popleft()
         if main[0] =="":
             main[0] += i
             main[1] +=1
