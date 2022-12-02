@@ -1,0 +1,36 @@
+def dfs(numbers, target):
+
+    first = [0]
+    for i in numbers:
+        lst = []
+        for j in first:
+            lst.append(j+i)
+            lst.append(j-i)
+        first = lst
+    return first.count(target)
+# print(dfs([1, 1, 1, 1, 1], 3))
+
+
+from collections import deque
+def bfs (numbers, target):
+    res = 0
+    q = deque()
+
+    length = len(numbers)
+    q.append([-numbers[0], 0])
+    q.append([+numbers[0], 0])
+
+
+    while q:
+        num, i = q.popleft()
+        if i+1 ==length:
+            if target == num :
+                res += 1
+        else:
+            q.append([num - numbers[i+1],i+1])
+            q.append([num + numbers[i+1],i+1])
+
+    return res
+
+
+print(bfs([1, 1, 1, 1, 1], 3))
