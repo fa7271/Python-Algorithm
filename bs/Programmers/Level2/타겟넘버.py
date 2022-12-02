@@ -33,4 +33,25 @@ def bfs (numbers, target):
     return res
 
 
-print(bfs([1, 1, 1, 1, 1], 3))
+# print(bfs([1, 1, 1, 1, 1], 3))
+
+
+def solution1(numbers, target):
+    answer = dfs(numbers,target,0)
+    return answer
+
+def dfs(numbers,target, depth):
+
+    answer = 0
+    if len(numbers) == depth:
+        if sum(numbers) == target:
+            return 1
+        else: return 0
+
+    else:
+        answer += dfs(numbers, target, depth+1)
+        numbers[depth] *= -1
+        answer += dfs(numbers, target, depth+1)
+        return answer
+
+print(solution1([1,1,1,1,1], 3))
