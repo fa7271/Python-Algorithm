@@ -69,3 +69,10 @@ def solution(numbers, target):
     dfs(0,0)
     return answer
 print(solution1([1,1,1,1,1], 3))
+
+
+from itertools import product
+def solution(numbers, target):
+    l = [(x, -x) for x in numbers]
+    s = list(map(sum, product(*l)))
+    return s.count(target)

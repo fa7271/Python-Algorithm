@@ -36,6 +36,41 @@ def get_divisor(n):
     data.append(n)
     return data
 
-print(get_divisor(8))
+
+def solution(nubmers, target):
+    res = [0]
+    for i in nubmers:
+        lst = []
+        for j in res:
+            lst.append(j+i)
+            lst.append(j-i)
+        res = lst
+    return res.count(target)
+# print(solution([4, 1, 2, 1], 4))
+
+
+from collections import deque
+def bfs (numbers, target):
+
+    res = 0
+    q = deque
+
+    number_len = len(numbers)
+    q.append([-numbers[0], 0] )
+    q.append([+numbers[0], 0] )
+
+    while q:
+        x, y = q.popleft()
+        if y == number_len -1 :
+            if target == x:
+                res +=1
+        else:
+            q.append([x - numbers[y+1], y+1])
+            q.append([x - numbers[y+1], y+1])
+    return res
+
+print(solution([4, 1, 2, 1], 4))
+
+
 
 
