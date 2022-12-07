@@ -11,7 +11,6 @@ graph = [[] for _ in range(V)]
 for _ in range(E):
     u,v,w = map(int,input().split())
     graph[u-1].append((v-1, w))
-
 hq = [(0, start)]
 while hq:
     cur_w, cur_node = heapq.heappop(hq)
@@ -20,6 +19,3 @@ while hq:
         if d < dist[to_node]:
             dist[to_node] = d
             heapq.heappush(hq, (d, to_node))
-
-for i in dist:
-    print(i if i!=float('inf') else 'INF')

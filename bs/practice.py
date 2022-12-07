@@ -69,7 +69,36 @@ def bfs (numbers, target):
             q.append([x - numbers[y+1], y+1])
     return res
 
-print(solution([4, 1, 2, 1], 4))
+# print(solution([4, 1, 2, 1], 4))
+import heapq as hq
+
+def solution(N, road, K):
+    answer = 0
+    graph = [[] for _ in range(N+1)]
+    distance = [float("inf") for _ in range(N+1)]
+    distance[1] = 0
+    for start,end,cost in road:
+        graph[start].append([end,cost])
+        graph[end].append([start,cost])
+    heap  = []
+    hq.heappush(heap,(0,1))
+    while heap:
+        cost,curr = hq.heappop(heap)
+        if distance[curr] < cost:
+            continue
+        for nxt,c in graph[curr]:
+            totalCost = cost + c
+            if totalCost < distance[nxt]:
+                print(totalCost, distance[nxt])
+                distance[nxt] = totalCost
+                hq.heappush(heap,(totalCost,nxt))
+    for i in distance[1:]:
+        if i <= K:
+            answer += 1
+    return answer
+
+print(solution(5, [[1, 2, 1], [2, 3, 3], [5, 2, 2], [1, 4, 2], [5, 3, 1], [5, 4, 2]], 3))
+
 
 
 
