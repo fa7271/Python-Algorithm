@@ -70,34 +70,34 @@ def bfs (numbers, target):
     return res
 
 # print(solution([4, 1, 2, 1], 4))
-import heapq as hq
+
+import heapq
 
 def solution(N, road, K):
-    answer = 0
-    graph = [[] for _ in range(N+1)]
-    distance = [float("inf") for _ in range(N+1)]
-    distance[1] = 0
-    for start,end,cost in road:
-        graph[start].append([end,cost])
-        graph[end].append([start,cost])
-    heap  = []
-    hq.heappush(heap,(0,1))
-    while heap:
-        cost,curr = hq.heappop(heap)
-        if distance[curr] < cost:
-            continue
-        for nxt,c in graph[curr]:
-            totalCost = cost + c
-            if totalCost < distance[nxt]:
-                print(totalCost, distance[nxt])
-                distance[nxt] = totalCost
-                hq.heappush(heap,(totalCost,nxt))
-    for i in distance[1:]:
-        if i <= K:
-            answer += 1
-    return answer
 
-print(solution(5, [[1, 2, 1], [2, 3, 3], [5, 2, 2], [1, 4, 2], [5, 3, 1], [5, 4, 2]], 3))
+    graph =[[] for _ in range(N+1)]
+
+    dist = [float("inf") for _ in range(N+1)]
+    dist[1] = 0
+    for i in range(len(road)):
+        start, end, point = road[i]
+        graph[start].append((end,point))
+        graph[end].append((start,point))
+
+    hq = []
+    heapq.heappush(hq,(0,1)) # 시작점 가중치0, 시작점 1
+    while hq:
+        cur_w, cur_node = heapq.heappop(hq) # cur_w 가중치, cur_node 시작점
+        for to_node, to_w in graph[cur_node]: # to_node 목적지, to_w 가중치 값
+            dis = cur_w + to_w # 새로운 가중치는 cur_w + to_w
+            if dis < dist[to_node]: # 기존것과 비교해서 작으면
+                dist[to_node] = dis # 작은걸로 최신화
+                heapq.heappush(hq,(dis,to_node))  # 다시 가중치와, 시작지 최신화
+
+
+
+# print(solution(5, [[1, 2, 1], [2, 3, 3], [5, 2, 2], [1, 4, 2], [5, 3, 1], [5, 4, 2]], 3))
+print(solution(	5, [[1, 2, 1], [2, 3, 3], [5, 2, 2], [1, 4, 2], [5, 3, 1], [5, 4, 2]], 3))
 
 
 
