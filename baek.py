@@ -58,4 +58,5 @@ print(min(RGB[-1]))
 res = []
 for i in board:
     res.append("".join(i))
-return list(map("".join,board))
+return list(map("".join,board)
+

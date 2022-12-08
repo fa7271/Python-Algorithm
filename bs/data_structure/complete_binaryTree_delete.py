@@ -99,24 +99,24 @@ class BinSearchTree:
             elif nChildren == 1:
                 # 하나 있는 자식이 왼쪽인지 오른쪽인지를 판단하여
                 # 그 자식을 어떤 변수가 가리키도록 합니다.
-                if node.left:
-                    now = node.left
+                if node.left: # 왼쪽 자식이면
+                    now = node.left # now 에 왼쪽 자식 저장
                 else:
-                    now = node.right
+                    now = node.right # 오른쪽 자식 저장
                 # 만약 parent 가 있으면
                 # node 가 왼쪽 자식인지 오른쪽 자식인지 판단하여
                 # 위에서 가리킨 자식을 대신 node 의 자리에 넣습니다.
-                if parent:
-                    if parent.left == node:
-                        parent.left = now
+                if parent: # 부모가 있으면
+                    if parent.left == node: # 부모의 왼쪽이 있으면
+                        parent.left = now # 왼쪽을 바꿔줌 >> 원래 왼쪽 데이터가 삭제된다
                     else:
                         parent.right = now
                 # 만약 parent 가 없으면 (node 는 root 인 경우)
                 # self.root 에 위에서 가리킨 자식을 대신 넣습니다.
                 else:
-                    self.root = now
+                    self.root = now # 부모가 없으면 맨 처음 루트에 넣는다.
             # When the node has both left and right children
-            else:
+            else: #자식이 둘 인경우,, 맨 위 일때도 두 개임,
                 parent = node
                 successor = node.right
                 # parent 는 node 를 가리키고 있고,
@@ -125,7 +125,7 @@ class BinSearchTree:
                 # 순환문이 종료할 때 successor 는 바로 다음 키를 가진 노드를,
                 # 그리고 parent 는 그 노드의 부모 노드를 가리키도록 찾아냅니다.
                 while successor.left:
-                    parent = successor
+                    parent = successor # successor 의 부모가 자기 자신일수도있음
                     successor = successor.left
 
                 # 삭제하려는 노드인 node 에 successor 의 key 와 data 를 대입합니다.
@@ -137,7 +137,7 @@ class BinSearchTree:
                 # successor 가 가지고 있던 (없을 수도 있지만) 자식을 가리키도록 합니다.
                 if parent.left == successor:
                     parent.left = successor.right
-                else:
+                else: # 부모의 오른자식이 successor 일때 successor 에 right를 가진다 , None 을 가질 수 도 있음,
                     parent.right = successor.right
 
             return True
