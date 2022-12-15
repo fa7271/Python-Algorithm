@@ -4,7 +4,6 @@ def solution(jobs):
     lst = sorted(jobs,key=lambda x:(x[1]))
     start = 0
     res = 0
-    print(lst)
     while lst:
         for i in range(len(lst)):
             if lst[i][0] <= start:
@@ -28,7 +27,6 @@ def solution1(jobs):
         for j in jobs:
             if start < j[0] <= now:
                 heapq.heappush(heap, (j[1], j[0]))
-        print(heap)
         if heap:
             cur = heapq.heappop(heap)
             start = now # 시작값을 heap 에서 빼준걸로 바꿈
@@ -39,9 +37,9 @@ def solution1(jobs):
             now += 1
     return answer // i
 
-
+print(solution([[1,9], [0, 3], [2, 6]]))
 # print(solution([[1,9], [0, 3], [4, 6]]))
 # print(solution([[2,2], [3, 3], [5,5]]))
-print(solution1([[1,9], [0, 3], [1,4],[1,5],[1,7],[2,2], [3, 3], [5,5]]))
+# print(solution([[1,9], [2, 3], [1,4],[2,5],[2,7],[2,2], [3, 3], [5,5]]))
 
 # 3, 6 , 11 , 22 ,
