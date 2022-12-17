@@ -22,8 +22,13 @@ def Sokcho():
         26000 #케이블카
     ]
     A,B,C = sum(food),sum(bus),sum(etc)
-    print(A,B,C)
     per = (A+B+C)//2
-    print(per)
 print(Sokcho())
 
+def damyang(n):
+    base =[
+        118400, # 버스
+        100000  # 숙소
+    ]
+
+print(damyang(2))
