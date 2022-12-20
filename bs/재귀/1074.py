@@ -2,18 +2,18 @@ import sys
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
 
-def func(n,r,c,k):
+def func(n,r,c):
     if n == 1:
-        return k
+        return 2 * r + c
     half = (2**n)//2
     if r < half and c < half: # 1사분면
-        return func(n-1, r, c, 0)
+        return func(n-1, r, c)
     elif r < half and c >= half:
-        return half * half + func(n-1, r, c-half, 1)
+        return half * half + func(n-1, r, c-half)
     elif r >= half & c < half:
-        return 2 * half * half + func(n-1, r-half, c, 2)
+        return 2 * half * half + func(n-1, r-half, c)
     else:
-        return 3 * half * half + func(n-1, r-half, c-half, 3)
+        return 3 * half * half + func(n-1, r-half, c-half)
 # def find_q(n, r, c):
 #
 #     num = 2**(n-1)
@@ -28,7 +28,7 @@ def func(n,r,c,k):
 #         return 3
 
 n,r,c =map(int,(input().split()))
-print(func(n, r, c, 0))
+print(func(n, r, c))
 
 
 
