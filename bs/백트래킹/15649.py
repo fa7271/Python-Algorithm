@@ -16,7 +16,7 @@ sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 #         if i in s:
 #             continue
 #         s.append(i)
-#         f()
+#         f()K
 #         s.pop()
 # f()
 
