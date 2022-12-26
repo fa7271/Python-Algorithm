@@ -3,8 +3,8 @@ sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
 
 n,m = map(int,input().split())
+visited = [False] * n
 result = []
-
 def solve(num):
     if num == m:
         print(*result)
