@@ -1,6 +1,6 @@
 def solution(data, col, row_begin, row_end):
 
-    x = sorted(data, key =lambda x:(x[col-1],-x[0]));''
+    x = sorted(data, key =lambda x:(x[col-1],-x[0]))
     res = []
     while row_begin<=row_end:
         ans = 0
