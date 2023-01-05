@@ -6,7 +6,7 @@ def solution(n, l, r):
             if b==2 or a==2:
                 answer-=1
                 break
-            num=a
+            num = a
 
     return answer
 
