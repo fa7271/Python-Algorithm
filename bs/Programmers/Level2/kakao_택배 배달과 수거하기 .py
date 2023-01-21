@@ -4,7 +4,6 @@ def solution1(cap, n, deliveries, pickups):
     deliveries = deliveries[::-1]
     pickups = pickups[::-1]
     answer = 0
-    print(deliveries,pickups)
     d = 0
     p = 0
 
