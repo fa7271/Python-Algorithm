@@ -26,9 +26,7 @@ def solution1(weights):
     dict1 = defaultdict(int)
     w_dict = defaultdict(int)
     for i in weights:
-        print(dict1[i*2], dict1[i*3], dict1[i*4])
         tmp = dict1[i*2] + dict1[i*3] + dict1[i*4]
-        print(tmp,'----')
         if tmp != 0 and i in w_dict:
             tmp -= 2 * w_dict[i]
         for j in range(2,5):
