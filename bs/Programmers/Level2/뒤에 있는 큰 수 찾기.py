@@ -42,6 +42,8 @@ def solution(numbers):
 #     return res
 
 
+
+
 def solution2(numbers):
     stack = []
     answer = [0] * len(numbers)
@@ -50,10 +52,10 @@ def solution2(numbers):
         while stack and numbers[stack[-1]] < numbers[i]:
             answer[stack.pop()] = numbers[i]
         stack.append(i)
-    while stack:
-        answer[stack.pop()] = -1
+    # while stack:
+        # answer[stack.pop()] = -1
 
-    return answer
+    return [i if i != 0 else -1 for i in answer]
 
 # i = 0 stack = [0]
 # i = 1 stack = [0,1]
