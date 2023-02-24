@@ -13,20 +13,15 @@ def solution(keymap, targets):
             else:
                 value[v] = min(value[v], k+1)
     for target in targets:
-        flag = True
-        count = 0
-        for c in target:
-            if(c in value):
-                count += value[c]
-            else:
-                flag = False
+        res = 0
+        for t in target:
+            if t not in value:
+                res = -1
                 break
-        if(flag):
-            ans.append(count)
-        else:
-            ans.append(-1)
+            res += value[t]
+        ans.append(res)
     return ans
 
-# print(solution(	["ABACD", "BCEFD"], ["ABCD", "AABB"])) # [9,4]
+print(solution(	["ABACD", "BCEFD"], ["ABCD", "AABB"])) # [9,4]
 print(solution(	["AA"], ["B"])) # [-`]
-# print(solution(	["AGZ", "BSSS"], ["ASA", "BGZ"])) #[4,6]
+print(solution(	["AGZ", "BSSS"], ["ASA", "BGZ"])) #[4,6]
