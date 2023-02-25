@@ -2,7 +2,6 @@ from collections import defaultdict
 
 
 def solution(keymap, targets):
-
     ans = []
 
     value = defaultdict(int)
