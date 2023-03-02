@@ -52,7 +52,6 @@ except:
 print("프로필로 이동 시도")
 try:
     # 프로필 페이지로 이동합니다.
-    print('프로필 이동 시도 2')
     profile = 'windy_tour'
     profile_link = driver.find_element(By.XPATH, f'//a[@href="/{profile}/"]')
     profile_link.click()
@@ -69,63 +68,35 @@ followers = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.X
 followings = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//a[@href='/windy_tour/following/']//span")))
 print("Followers: " + followers.text)
 print("Followings: " + followings.text)
-#
-# followers = driver.find_element_by_xpath(
-#     "/html/body/div[1]/section/main/div/header/section/ul/li[2]/a")
-# followers.click()
-# time.sleep(10)
-#
-# pop_up_window = WebDriverWait(driver, 2).until(
-#     EC.element_to_be_clickable((By.CLASS_NAME, 'isgrP')))
-# while True:
-#     driver.execute_script(
-#         'arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', pop_up_window)
-#     time.sleep(10)
-#     break
-#
-# soup = BeautifulSoup(driver.page_source, 'html.parser')
-# followers = soup.select(
-#     "body > div.RnEpo.Yx5HN > div > div > div > div.isgrP > ul > div > li")
-# followers_lst = []
-# for follower in followers:
-#     follwers_id = follower.select_one(
-#         "div > div.t2ksc > div.enpQJ > div.d7ByH > span > a").text
-#     followers_lst.append(follwers_id)
-# print(followers_lst)
-#
-# close_followers = driver.find_element_by_css_selector(
-#     "body > div.RnEpo.Yx5HN > div > div > div > div:nth-child(1) > div > div.WaOAr._8E02J > div > button")
-# close_followers.click()
-#
-# followings = driver.find_element_by_xpath(
-#     "/html/body/div[1]/section/main/div/header/section/ul/li[3]/a")
-# followings.click()
-# time.sleep(10)
-# pop_up_window = WebDriverWait(driver, 2).until(
-#     EC.element_to_be_clickable((By.CLASS_NAME, 'isgrP')))
-# while True:
-#     driver.execute_script(
-#         'arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', pop_up_window)
-#     time.sleep(1)
-#     break
-# soup = BeautifulSoup(driver.page_source, 'html.parser')
-# followings = soup.select(
-#     "body > div.RnEpo.Yx5HN > div > div > div > div.isgrP > ul > div > li")
-# followings_lst = []
-# for following in followings:
-#     followings_id = following.select_one("div > div > span > a").text
-#     followings_lst.append(followings_id)
-# print(followings_lst)
-#
-# result = []
-# for following in followings_lst:
-#     cnt = 0
-#     for follower in followers_lst:
-#         if following == follower:
-#             cnt += 1
-#             break
-#     if cnt == 0:
-#         result.append(following)
-#
-# print('맞팔하지 않은 사람 목록: '+str(result))
-# print(cnt)
+
+
+# 팔로워 버튼 클릭하기
+followers = driver.find_element(By.XPATH, "//a[@href='/windy_tour/followers/']")
+followers.click()
+time.sleep(5)
+print("팔로워 가져오기")
+# 팔로워 목록이 모두 로딩될 때까지 스크롤을 내리며 팔로워 가져오기
+while True:
+    try:
+        print("1")
+        # 팝업 윈도우 가져오기
+        popup = WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, "//div[@class='isgrP']")))
+
+        # 팔로워 목록 가져오기
+        print("2")
+        followers_list = popup.find_elements(By.XPATH, "//li[@class='wo9IH']//a[@title]")
+
+        print("3")
+        # 스크롤을 끝까지 내림
+        driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", popup)
+        print("4")
+        # 일정 시간 대기
+        time.sleep(5)
+
+    except NoSuchElementException:
+        print(NoSuchElementException)
+        break
+
+
+
