@@ -1,6 +1,7 @@
 import time
 import os
 from selenium import webdriver
+from selenium.common import NoSuchElementException, ElementClickInterceptedException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -50,42 +51,24 @@ except:
 
 print("프로필로 이동 시도")
 try:
-    WebDriverWait(driver, 30).until(EC.url_contains("https://www.instagram.com/"))
-    print("로그인 성공")
-
     # 프로필 페이지로 이동합니다.
-    driver.get('https://www.instagram.com/windy_tour/')
+    print('프로필 이동 시도 2')
+    profile = 'windy_tour'
+    profile_link = driver.find_element(By.XPATH, f'//a[@href="/{profile}/"]')
+    profile_link.click()
     print("프로필 페이지로 이동 성공")
-except:
-    print('실패')
+except NoSuchElementException:
+    print("프로필 페이지가 존재하지 않습니다.")
+except ElementClickInterceptedException:
+    print("프로필 페이지로 이동하는 과정에서 클릭 오류가 발생했습니다.")
+
+print("프로필로 이동 성공, 팔로워,팔로잉 데이터 크롤링")
 
 
-# try:
-#     profile_button = WebDriverWait(driver, 50).until(
-#         EC.presence_of_element_located((By.CSS_SELECTOR, "a[href='/windy_tour/']")))
-#     profile_button.click()
-# except:
-#     print("프로필로 이동 오류발생")
-
-print("성공")
-#
-#
-# my_photo = driver.find_element(By.CSS_SELECTOR,
-#                                "#react-root > section > nav > div._8MQSO.Cx7Bp > div > div > div.ctQZg.KtFt3 > div > div:nth-child(6)")
-# my_photo.click()
-# time.sleep(30)
-#
-# profile = driver.find_element_by_css_selector(
-#     "#react-root > section > nav > div._8MQSO.Cx7Bp > div > div > div.ctQZg.KtFt3 > div > div:nth-child(6) > div.poA5q > div.uo5MA._2ciX.tWgj8.XWrBI > div._01UL2 > a:nth-child(1)")
-# profile.click()
-# time.sleep(10)
-#
-# followers = driver.find_element_by_xpath(
-#     "/html/body/div[1]/section/main/div/header/section/ul/li[2]/a/div/span")
-# followings = driver.find_element_by_xpath(
-#     "/html/body/div[1]/section/main/div/header/section/ul/li[3]/a/div/span")
-# print("Followers: " + followers.text)
-# print("Followings: " + followings.text)
+followers = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//a[@href='/windy_tour/followers/']//span")))
+followings = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//a[@href='/windy_tour/following/']//span")))
+print("Followers: " + followers.text)
+print("Followings: " + followings.text)
 #
 # followers = driver.find_element_by_xpath(
 #     "/html/body/div[1]/section/main/div/header/section/ul/li[2]/a")
