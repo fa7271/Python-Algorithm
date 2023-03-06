@@ -1,7 +1,8 @@
 import time
 import os
+
 from selenium import webdriver
-from selenium.common import NoSuchElementException, ElementClickInterceptedException
+from selenium.common import NoSuchElementException, ElementClickInterceptedException, TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -70,33 +71,55 @@ print("Followers: " + followers.text)
 print("Followings: " + followings.text)
 
 
-# 팔로워 버튼 클릭하기
-followers = driver.find_element(By.XPATH, "//a[@href='/windy_tour/followers/']")
-followers.click()
+# 팔로워 버튼 클릭
+followers_button = driver.find_element(By.XPATH, "//a[@href='/windy_tour/followers/']")
+followers_button.click()
+
 time.sleep(5)
-print("팔로워 가져오기")
-# 팔로워 목록이 모두 로딩될 때까지 스크롤을 내리며 팔로워 가져오기
-while True:
-    try:
-        print("1")
-        # 팝업 윈도우 가져오기
-        popup = WebDriverWait(driver, 20).until(
-            EC.presence_of_element_located((By.XPATH, "//div[@class='isgrP']")))
 
-        # 팔로워 목록 가져오기
-        print("2")
-        followers_list = popup.find_elements(By.XPATH, "//li[@class='wo9IH']//a[@title]")
+followers_list = []
+prev_len = 0
+print(len(followers_list), int(followers.text))
+while len(followers_list) < int(followers.text):
+    # 팔로워 목록 가져오기
+    followers_elems = driver.find_elements(By.XPATH, "//div[@class='isgrP']//li")
+    print("목록 가져옴")
+    if not followers_elems:
+        WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.CLASS_NAME, 'isgrP')))
+        continue
+    for elem in followers_elems:
+        follower_name = elem.find_element(By.XPATH, ".//a").text
+        if follower_name not in followers_list:
+            followers_list.append(follower_name)
 
-        print("3")
-        # 스크롤을 끝까지 내림
-        driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", popup)
-        print("4")
-        # 일정 시간 대기
-        time.sleep(5)
+    # 스크롤 다운
+    print("스크롤 다운 시작", followers_list,prev_len)
+    if followers_elems:
+        driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", followers_elems[-1])
 
-    except NoSuchElementException:
-        print(NoSuchElementException)
+    if len(followers_list) == prev_len:
         break
+    prev_len = len(followers_list)
 
+    # 대기
+    time.sleep(2)
+
+# 팔로워 목록이 모두 로딩될 때까지 스크롤을 내리며 팔로워 가져오기
+# time.sleep(15)
+# pop_up_window = WebDriverWait(driver, 50).until(EC.visibility_of_element_located((By.XPATH, "//div[@class='isgrP']")))
+#
+# print("팔로워 목록 대기")
+# while True:
+#     # 현재 스크롤 위치 저장
+#     last_height = driver.execute_script("return arguments[0].scrollHeight", pop_up_window)
+#     # 스크롤을 최하단까지 내림
+#     driver.execute_script("arguments[0].scrollTo(0, arguments[0].scrollHeight);", pop_up_window)
+#     # 페이지 로딩 대기
+#     time.sleep(5)
+#     # 새로운 스크롤 위치 계산
+#     new_height = driver.execute_script("return arguments[0].scrollHeight", pop_up_window)
+#     # 새로운 스크롤 위치와 이전 스크롤 위치 비교
+#     if new_height == last_height:
+#         break
 
 
