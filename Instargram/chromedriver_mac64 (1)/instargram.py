@@ -1,9 +1,10 @@
 import time
 import os
 
+from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.common import NoSuchElementException, ElementClickInterceptedException, TimeoutException
-from selenium.webdriver import ActionChains
+from selenium.common import NoSuchElementException, ElementClickInterceptedException
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -75,34 +76,33 @@ print("Followings: " + followings.text)
 followers_button = driver.find_element(By.XPATH, "//a[@href='/windy_tour/followers/']")
 followers_button.click()
 
-time.sleep(5)
+pop_up_window = WebDriverWait(driver, 10).until(
+    EC.element_to_be_clickable((By.CLASS_NAME, 'isgrP')))
+while True:
+    driver.execute_script(
+        'arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', pop_up_window)
+    time.sleep(3)
+    break
 
-followers_list = []
-prev_len = 0
-print(len(followers_list), int(followers.text))
-while len(followers_list) < int(followers.text):
-    # 팔로워 목록 가져오기
-    followers_elems = driver.find_elements(By.XPATH, "//div[@class='isgrP']//li")
-    print("목록 가져옴")
-    if not followers_elems:
-        WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.CLASS_NAME, 'isgrP')))
-        continue
-    for elem in followers_elems:
-        follower_name = elem.find_element(By.XPATH, ".//a").text
-        if follower_name not in followers_list:
-            followers_list.append(follower_name)
+soup = BeautifulSoup(driver.page_source, 'html.parser')
+followers = soup.select(
+    "body > div.RnEpo.Yx5HN > div > div > div > div.isgrP > ul > div > li")
+followers_lst = []
+for follower in followers:
+    follwers_id = follower.select_one(
+        "div > div.t2ksc > div.enpQJ > div.d7ByH > span > a").text
+    followers_lst.append(follwers_id)
+print(followers_lst)
 
-    # 스크롤 다운
-    print("스크롤 다운 시작", followers_list,prev_len)
-    if followers_elems:
-        driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", followers_elems[-1])
+close_followers = driver.find_element(By.CSS_SELECTOR,
+    "body > div.RnEpo.Yx5HN > div > div > div > div:nth-child(1) > div > div.WaOAr._8E02J > div > button")
+close_followers.click()
 
-    if len(followers_list) == prev_len:
-        break
-    prev_len = len(followers_list)
+followings = driver.find_element(By.XPATH,
+                                 "//a[@href='/windy_tour/following/']")
+followings.click()
+time.sleep(10)
 
-    # 대기
-    time.sleep(2)
 
 # 팔로워 목록이 모두 로딩될 때까지 스크롤을 내리며 팔로워 가져오기
 # time.sleep(15)
