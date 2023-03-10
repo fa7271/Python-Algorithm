@@ -30,7 +30,7 @@ login_button = driver.find_element(By.CSS_SELECTOR,
 print("로그인 진행중")
 act = ActionChains(driver)
 act.send_keys_to_element(id_box, 'windy7271@naver.com').send_keys_to_element(
-    password_box, 'Sb813792!!@').click(login_button).perform()
+    password_box, '23749').click(login_button).perform()
 print("로그인 성공")
 time.sleep(20)
 
@@ -77,7 +77,7 @@ followers_button = driver.find_element(By.XPATH, "//a[@href='/windy_tour/followe
 followers_button.click()
 
 pop_up_window = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.CLASS_NAME, 'isgrP')))
+    EC.element_to_be_clickable((By.CLASS_NAME, '_aano')))
 while True:
     driver.execute_script(
         'arguments[0].scrollTop = arguments[0].scrollTop + arguments[0].offsetHeight;', pop_up_window)
