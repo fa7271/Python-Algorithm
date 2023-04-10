@@ -9,7 +9,7 @@ def solution(sequence, k):
             end += 1
         if sum == k:
             res.append([ i, end-1,end-1-i ])
-        sum -= sequence[i]합
+        sum -= sequence[i]
 
     res = sorted(res, key = lambda x:x[2])
     return res[0][:2]
