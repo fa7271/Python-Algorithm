@@ -26,17 +26,19 @@ import math
 #     return answer
 
 def solution(n, stations, w):
-    res, now, idx = 0, 1, 0 # 정답값, 현재 아파트 번호, 기지국 인덱스
+    answer = 0
+    current = 1 # 현재 아파트 번호
+    i = 0 # 현재 기지국 인덱스
 
-    while now <= n:
-        # 기지국 범위 안에 포함되는 경우이다. 1, 4 - 1
-        if idx < len(stations) and now >= stations[idx] - w:
-            now = stations[idx] + w + 1 #아파트 번호는 기지국 바로 옆으로 이동
-            idx += 1 #다음 기지국으로 이동
-        else: # 포함이 안된경우 기지국 설치
-            now += w * 2 +1
-            res += 1
-    return res
+    while current <= n:
+        if i < len(stations) and current >= stations[i] - w: # 기지국 범위에 포함되는 경우
+            current = stations[i] + w + 1 # 기지국 범위 바깥으로 이동
+            i += 1 # 다음 기지국으로 이동
+        else: # 기지국 범위에 포함되지 않는 경우
+            current += w * 2 + 1 # w만큼의 범위를 커버하기 위해 기지국 설치
+            answer += 1 # 기지국 설치 개수 증가
+
+    return answer
 
 # print(solution(16,[9],2))
 
