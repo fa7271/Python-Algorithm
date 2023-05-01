@@ -1,38 +1,35 @@
 import sys
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
-N = int(input())
+from collections import deque
 
-lst = []
-res = []
-for i in range(N):
-    x = input().split(" ")
+n = int(sys.stdin.readline())
+queue = deque()
+
+for i in range(n):
+    x = sys.stdin.readline().split()
+
     if x[0] == "push":
-        lst.append(x[1])
-    elif x[0] =="top":
-        if len(lst) == 0:
-            res.append(-1)
+        queue.append(x[1])
+    elif x[0] == "pop":
+        if len(queue) == 0:
+            print(-1)
         else:
-            top = lst.pop()
-            res.append(top)
-            lst.append(top)
+            print(queue.popleft())
     elif x[0] == "size":
-        now = len(lst)
-        res.append(now)
-    elif x[0] =="empty":
-        if len(lst) == 0:
-            res.append(1)
+        print(len(queue))
+    elif x[0] == "empty":
+        if len(queue) == 0:
+            print(1)
         else:
-            res.append(0)
-    elif x[0] == 'pop':
-        if len(lst) == 0:
-            res.append(-1)
+            print(0)
+    elif x[0] == "front":
+        if len(queue) == 0:
+            print(-1)
         else:
-            now = lst.pop()
-            res.append(now)
-print(*res,sep="\n")
-
-
-
-
-
+            print(queue[0])
+    elif x[0] == "back":
+        if len(queue) == 0:
+            print(-1)
+        else:
+            print(queue[-1])
