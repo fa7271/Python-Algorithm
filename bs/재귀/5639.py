@@ -1,25 +1,26 @@
 import sys
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
+sys.setrecursionlimit(10**6)
 
 
-pre = []
+lis = []
 while True:
     try:
-        pre.append(int(input()))
+        lis.append(int(sys.stdin.readline()))
     except:
         break
-print(pre)
-def dfs(start,end):
-    if start > end:
+
+def dfs(start, end):
+    if start > end :
         return
-    mid = end + 1 ## 맨 오른쪽 가는게 없을 수 도 있음
-    for i in range(start+1, end+1):
-        if pre[start] < pre[i]:
+    mid = end + 1
+    for i in range(start+1,end+1):
+        if lis[start] < lis[i]:
             mid = i
-            # print(start,pre[start],"ahah",i,pre[i], mid)
             break
     dfs(start+1,mid-1)
     dfs(mid,end)
-    print(pre[start])
+    print(lis[start])
 
-dfs(0, len(pre)-1)
+
+dfs(0,len(lis)-1)
