@@ -8,5 +8,5 @@ def fibo(x):
         return 1
     return x * fibo(x-1)
 
-print(fibo(2))
+print(fibo(N))
 
