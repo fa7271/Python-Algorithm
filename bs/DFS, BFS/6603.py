@@ -1,4 +1,5 @@
 import sys
+sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 from collections import deque
 
 
@@ -9,6 +10,7 @@ def dfs(start, depth):
         print()
         return
     for i in range(start, len(arr)):
+        print(depth,i)
         res[depth] = arr[i]
         dfs(i + 1, depth + 1)
 res = [0 for i in range(13)]
