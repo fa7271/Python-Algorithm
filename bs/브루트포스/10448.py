@@ -8,7 +8,7 @@ def find(n):
     for i in range(len(lst)):
         for j in range(i, len(lst)):
             for k in range(j, len(lst)):
-                if t[lst]+t[lst]+t[lst] == n:
+                if lst[i]+lst[j]+lst[k] == n:
                     return 1
     return 0
 
