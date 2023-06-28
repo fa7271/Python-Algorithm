@@ -33,18 +33,18 @@ res = 0
 # print(cnt)
 
 
-
+result = []
 def solution(num, total):
-    global cnt,res
+    global cnt,res,result
     if num == N:
-        if total == S:
+        if total == S and len(result)>0:
             cnt += 1
         return
-
+    result.append(arr[num])
     res += arr[num]
     solution(num+1, res)
     res -= arr[num]
+    result.pop()
     solution(num+1, res)
-
 solution(0, 0)
 print(cnt)
