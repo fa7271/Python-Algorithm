@@ -16,10 +16,8 @@ for i in range(1, len(board)):
     if board[i]:
         res = i * i
         while True:
-            print(i,res,result)
             if res < A:
                 res *= i
-                continue
             elif res > B:
                 break
             res *= i
