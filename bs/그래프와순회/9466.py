@@ -8,15 +8,15 @@ def dfs(x):
     global result
     visited[x] = True
     cycle.append(x)
-    number = numbers[x]
+    next = numbers[x]
 
     # 이미 방문한 노드인 경우 (사이클 가능 여부 판단)
-    if visited[number] == True:
-        if number in cycle:  # 사이클이 존재하는 경우
-            result += cycle[cycle.index(number):]  # 사이클을 이루는 구간부터 팀을 이룸
+    if visited[next] == True:
+        if next in cycle:  # 사이클이 존재하는 경우
+            result += cycle[cycle.index(next):]  # 사이클을 이루는 구간부터 팀을 이룸
         return
     else:
-        dfs(number)  # 방문하지 않은 노드인 경우 계속해서 탐색 진행
+        dfs(next)  # 방문하지 않은 노드인 경우 계속해서 탐색 진행
 
 # 테스트 케이스 수만큼 반복
 for i in range(T):
