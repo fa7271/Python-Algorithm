@@ -2,18 +2,14 @@ import sys
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
 
-data = []
 n = int(input())
-for _ in range(n):
-    data.append(list(map(int, input().split())))
+lst = [list(map(int,sys.stdin.readline().rstrip().split(" "))) for _ in range(n)]
 
-d = [0] * (n+1)
+dp = [0] * (n+1)
 for i in range(1,n+1):
-    t, p = data[i-1][0], data[i-1][1]
+    t, p = lst[i-1][0], lst[i-1][1]
     if i+t-1 <= n:
-        d[i+t-1] = max(d[i+t-1], d[i-1] + p)
-    if d[i] < d[i-1] :
-        d[i] = d[i-1]
-        print(d[i])
-print(d)
-print(max(d))
+        dp[i+t-1] = max(dp[i+t-1], dp[i-1] + p)
+    if dp[i] < dp[i-1] :
+        dp[i] = dp[i-1]
+print(max(dp))
