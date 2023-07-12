@@ -27,7 +27,6 @@ cnt = 0  # 도시에 세워진 건물의 개수
 
 for i in range(n):  # 건물의 개수만큼 반복
     nums = list(map(int, input().split()))  # 건물의 번호와 높이 입력 받음
-    print(stack,cnt)
     while stack:  # 스택이 비어있지 않은 동안 반복
         if stack[-1] > nums[1]:  # 스택의 마지막 원소가 현재 건물의 높이보다 큰 경우
             cnt += 1  # 새로운 건물의 시작을 의미하므로 건물 개수 증가
