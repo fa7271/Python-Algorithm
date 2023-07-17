@@ -23,7 +23,6 @@ for k in range(1, n + 1): # 경유지
         for b in range(1, n + 1): # 도착지
             # a > b 랑 a > k > b중에  최솟값으로 바꿔줌
             graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
-            1 > 4 a > 3 > 4
 for a in range(1, n + 1):
     for b in range(1, n + 1):
         if graph[a][b] == INF:
