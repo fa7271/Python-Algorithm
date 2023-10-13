@@ -12,14 +12,14 @@ for i in range(N-1):
     jump.append((x, y))
     # 원점
     if i+1 < N:
-        dp[i+1] = min(dp[i] + x,dp[i+1])
+        dp[i+1] = min(dp[i] + x, dp[i+1])
     # 투쩜
     if i+2 < N:
-        dp[i+2] = min(dp[i] +y , dp[i+2])
+        dp[i+2] = min(dp[i] + y, dp[i+2])
 res=dp[-1]
 k = int(input())
 for idx in range(0, N-3):
-    new_dp=copy.deepcopy(dp)
+    new_dp = copy.deepcopy(dp)
 
     if dp[idx] + k < dp[idx+3]:
         new_dp[idx+3] = dp[idx]+k
