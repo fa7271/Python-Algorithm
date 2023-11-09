@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
+sys.stdin = open('/Python/h.txt', 'r')
 
 n = int(input())
 lst = [list(map(int,input().split())) for _ in range(n)]
