@@ -4,7 +4,7 @@ from collections import deque
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
 
-n = int(input())
+n = int(sys.stdin.readline())
 q = deque()
 q.append([n])
 ans = []
@@ -22,6 +22,5 @@ while q:
         q.append([x // 2] + lst)
 
     q.append([x - 1] + lst)
-ans.reverse()
 print(len(ans) - 1)
-print(*ans)
+print(*ans[::-1])
