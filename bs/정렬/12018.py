@@ -20,5 +20,4 @@ for i in result:
         print(count - 1)
         break
 
-if m > 0:
-    print(count)
+print(count)
