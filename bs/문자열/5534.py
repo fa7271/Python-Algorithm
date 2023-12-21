@@ -26,6 +26,13 @@ for word in word_list:
     count += check(word)
 print(count)
 
+def search(a, b, name):
+    for i1 in a:
+        for i2 in [i for i in b if i1 < i]:
+            step = i2 - i1
+            if name in s[i1::step]:
+                return 1
+    return 0
 
 # # 시간 초과
 # for _ in range(n):
