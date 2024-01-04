@@ -88,7 +88,6 @@ def bfs(x, y):
             if 0 <= nx < r and 0 <= ny < c and graph[nx][ny] == 'x' and not visited[nx][ny]:
                 visited[nx][ny] = 1
                 q.append([nx, ny])
-    print('1')
     # 그렇게 해서 나온 떨어진 클러스터의 가장 아래에 있는 좌표들과, 미네랄 좌표 체크리스트 들고감
     # 없으면 밑에 조차 안감.
     lets_go_fall_visited(fall, visited)
@@ -100,8 +99,6 @@ for index in height:
     stick(index, left)
     while Q:
         x, y = Q.popleft()
-        print(x,y)
-        print("bfs호출")
         bfs(x, y)
     left *= -1
     break
