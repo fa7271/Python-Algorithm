@@ -6,7 +6,6 @@ def solution(record):
         i = records.split()
         if len(i) == 3:
             dic[i[1]] = i[2] # change 된거 까지 봐꿔줌
-
     for records in record:
         j = records.split()
         if j[0] == "Enter":
