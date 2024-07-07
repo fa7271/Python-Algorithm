@@ -17,5 +17,4 @@ for i in range(1, n):
         heapq.heappop(heap)
     # 그 사이에 시작되면 방이 필요함.
     heapq.heappush(heap, lst[i][1])
-    print(heap)
 print(len(heap))
