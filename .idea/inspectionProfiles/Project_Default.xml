@@ -8,6 +8,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="int.isnumeric" />
+          <option value="Python.solution" />
         </list>
       </option>
     </inspection_tool>
