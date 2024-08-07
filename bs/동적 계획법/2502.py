@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
+sys.stdin = open('/Python/h.txt', 'r')
 
 d, k = map(int, sys.stdin.readline().rstrip().split(" "))
 dp = [1, 1] + [0 for _ in range(d - 2)]
