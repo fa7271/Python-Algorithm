@@ -6,9 +6,10 @@ t = int(input())
 
 
 def dj(start):
-    distance = [1e9] * (n + 1)
+    distance = [int(1e9)] * (n + 1)
     heap = []
     heapq.heappush(heap, (start, 0))
+    distance[start] = 0
     while heap:
         cur_node, cur_w = heapq.heappop(heap)
         if distance[cur_node] < cur_w:
@@ -38,4 +39,6 @@ for i in range(t):
     for des in destination:
         if S[des] == S[g] + G[h] + H[des] or S[des] == S[h] + H[g] + G[des]:
             res.append(des)
-    print(*sorted(res), end='\n')
+    res.sort()
+    for result in res:
+        print(result, end=' ')
