@@ -19,7 +19,7 @@ for _ in range(n):
             Q.append((num, word + "D"))
             visited[num] = True
 
-        num = (n - 1) % 10000
+        num = (number - 1) % 10000
         if not visited[num]:
             Q.append((num, word + "S"))
             visited[num] = True
