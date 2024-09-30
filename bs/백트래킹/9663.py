@@ -1,31 +1,32 @@
 import sys
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
-N =int(input())
-col = [0] * (N+1)
-count =0
-def N_Queen(col, i):
-    n =len(col) -1
-    if promising(col, i):
-        if i == n:
-            global count
-            count += 1
-        else:
-            for j in range(1, n+1): # 다음 행 체크하려고 (1,3) 왔을때 2,1 / 2,2/ 2,3/ 2,4 체크
-                col[i+1] = j # 다음행 추가(1,3,1)\/ (1,3,2) 이런식
-                N_Queen(col,i+1)
-def promising(col, i):
-    k = 1
-    flag = True
-    while (k < i and flag): # k 가 i 보다 작고 True일때
-        if (col[i] == col[k] or abs(col[i]-col[k]) == (i-k)): # 같은 col에 있느냐, 같은대각선이냐
-            flag = False # 있으면 false
-        k += 1
-    return flag
+import sys
 
-N_Queen(col,0)
 
-print(count)
+n = int(input())
+res = 0
+lst = [0] * n
 
+
+def is_possible(x):
+    for i in range(x):
+        if lst[i] == lst[x] or abs(x-i) == abs(lst[x]-lst[i]):
+            return False
+    return True
+
+
+def bt(i):
+    global res
+    if i == n:
+        res += 1
+        return
+    for j in range(n):
+        lst[i] = j
+        if is_possible(i):
+            bt(i+1)
+        lst[i] = 0
+bt(0)
+print(res)
 # def dfs(depth):
 #     global count
 #     if depth == N:
