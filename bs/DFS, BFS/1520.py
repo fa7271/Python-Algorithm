@@ -1,7 +1,6 @@
 import sys
-from collections import deque
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
-
+sys.setrecursionlimit(10**6)
 M,N = map(int, sys.stdin.readline().split(" "))
 maps = [list(map(int,sys.stdin.readline().rstrip().split(" "))) for _ in range(M)]
 
@@ -26,6 +25,4 @@ def dfs(x, y):
                     dp[x][y] += dfs(nx, ny)
     return dp[x][y]
 print(dfs(0, 0))
-
-
 
