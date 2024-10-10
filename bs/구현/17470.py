@@ -1,6 +1,7 @@
 import sys
 
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
+
 n, m, r = map(int, sys.stdin.readline().rstrip().split())
 
 graph = [list(map(int, sys.stdin.readline().rstrip().split())) for _ in range(n)]
@@ -98,7 +99,12 @@ N = n // 2
 M = m // 2
 section = [[row[:M] for row in graph[:N]], [row[M:] for row in graph[:N]], [row[M:] for row in graph[N:]],
            [row[:M] for row in graph[N:]]]
-
+# 상하반전
+if result[0]:
+    section[0].reverse()
+    section[1].reverse()
+    section[2].reverse()
+    section[3].reverse()
 # 좌우반전
 if result[1]:
     section[0] = [row[::-1] for row in section[0]]
