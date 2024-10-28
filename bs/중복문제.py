@@ -1,23 +1,16 @@
-import heapq
 import sys
-import re
+from collections import deque
 
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
-a, b = map(int, input().split())
-
-m = int(input())
-
-arr = list(map(int, input().split()))
-arr.reverse()
-ten = 0
-for i in range(m):
-    ten += arr[i] * (a ** i)
-
-result = []
-while ten // b:
-    result.append(ten % b)
-    ten = ten // b
-result.append(ten)
-result.reverse()
-print(' '.join(map(str, result)))
+arr = [1, 2]
+n = 2
+res = []
+for i in range(1 << n):
+    temp = []
+    for j in range(n):
+        if i & (1 << j):
+            continue
+        temp.append(arr[j])
+    res.append(temp)
+print(res)
