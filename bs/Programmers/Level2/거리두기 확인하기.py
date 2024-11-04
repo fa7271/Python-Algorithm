@@ -6,7 +6,10 @@ def solution(places):
     answer = []
     board = [[list(map(str, j)) for j in places[i]] for i in range(len(places))]
     move = [(0,1),(0,-1),(1,0),(-1,0)]
-
+    for i in range(5):
+        for j in range(5):
+            if board[i][j] == 'P':
+                board[i][j] = 'X'
     def find(x, y):
         for dx, dy in move:
             nx = dx + x[0]
