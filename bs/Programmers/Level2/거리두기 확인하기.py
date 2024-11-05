@@ -10,6 +10,8 @@ def solution(places):
         for j in range(5):
             if board[i][j] == 'P':
                 board[i][j] = 'X'
+
+
     def find(x, y):
         for dx, dy in move:
             nx = dx + x[0]
