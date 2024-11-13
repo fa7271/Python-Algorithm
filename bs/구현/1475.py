@@ -1,7 +1,3 @@
-import sys
-
-sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
-
 dic = [0] * 9
 for i in list(map(int, sys.stdin.readline().rstrip())):
     if i == 9:
