@@ -14,7 +14,6 @@ while True:
         break
     count += (2 ** length)
     length += 1
-
 offset = n - count - 1
 
 
