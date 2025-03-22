@@ -12,7 +12,7 @@ spots = [0] * 8
 spots[0] = (xs, ys)
 spots[7] = (xe, ye)
 
-graph = [[1e9] * 8 for _ in range(8)]
+graph = [[1e11] * 8 for _ in range(8)]
 graph[0][7] = graph[7][0] = cal_distance(spots[0], spots[7])
 
 for i in range(1, 4):
@@ -20,7 +20,6 @@ for i in range(1, 4):
     # 거리들 순서대로 받아옴
     spots[i * 2 - 1] = (x1, y1)
     spots[i * 2] = (x2, y2)
-
     # 양방향 점프가능
     # 점프하는거랑 두개 사이 거리랑 가까운걸로
     graph[i * 2 - 1][i * 2] = graph[i * 2][i * 2 - 1] = min(cal_distance(spots[i * 2 - 1], spots[i * 2]), 10)
