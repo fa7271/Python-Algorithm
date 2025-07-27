@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://myEndPoint.ap-northeast-2.rds.amazonaws.com</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="rds my_db" uuid="8ff6b4bf-4c0a-4385-badf-283171a0c43c">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://my-db.cbku8mggudio.ap-northeast-2.rds.amazonaws.com:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
