@@ -2,7 +2,7 @@ import sys
 
 sys.stdin = open('/Users/song/Desktop/Python/Python/h.txt', 'r')
 
-dic = [0] * 9
+dic = [0] * 10
 for i in list(map(int, sys.stdin.readline().rstrip())):
     if i == 9:
         dic[6] += 1
